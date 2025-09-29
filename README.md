@@ -5,7 +5,7 @@ A 2D platformer-style game where the player controls a gnome swinging on a rope 
 ---
 
 ## Engine / Language / Version
-- Unity 2021.3.x (LTS)  
+- Unity 6.2(6000.2.2f1)
 - C#
 
 ---
@@ -29,8 +29,7 @@ A 2D platformer-style game where the player controls a gnome swinging on a rope 
 
 ## Known Issues / Limitations
 - Rope physics may jitter slightly at higher speeds.  
-- Currently only one level (prototype).  
-- Limited sound effects (background music placeholder only).  
+- Currently only one level (prototype).    
 
 ---
 
@@ -41,10 +40,11 @@ A 2D platformer-style game where the player controls a gnome swinging on a rope 
 ---
 
 ## Group Members & Contribution
-- **Your Name** — Development, scripting, project setup  
-- (Add more if group project)
+- Trishea P. Liwanag — Development, project setup, powerpoint creation(Gnomes plan and steps), Third-party.md creation
+- Angela Josef - Voice Record, create the srt file for subtitle, how_to_run.md creation
+- AJ Karl M. AnchetA - readme.md creation, edited the video tutorial, readme.md creation
 
 ---
 
 ## Date of Final Commit / Release
-- `MM-DD-YYYY`
+- `September 29, 2025`
