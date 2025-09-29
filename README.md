@@ -34,7 +34,7 @@ A 2D platformer-style game where the player controls a gnome swinging on a rope 
 ---
 
 ## Video Demonstration
-- 🎥 [Step-by-step development video (YouTube, Unlisted)]([https://youtu.be/euAIgIck518?si=RoZoXDmuk3B0ktPg])  
+- 🎥 [Step-by-step development video link: ([https://youtu.be/euAIgIck518?si=RoZoXDmuk3B0ktPg])  
 - Subtitles file: `subtitles/GnomeOnARope_subtitles.srt`
 
 ---
