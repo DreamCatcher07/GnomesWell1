@@ -34,7 +34,7 @@ A 2D platformer-style game where the player controls a gnome swinging on a rope 
 ---
 
 ## Video Demonstration
-- 🎥 [Step-by-step development video link: ([https://youtu.be/euAIgIck518?si=RoZoXDmuk3B0ktPg])  
+-  [Step-by-step development video link: ([https://youtu.be/euAIgIck518?si=RoZoXDmuk3B0ktPg])  
 - Subtitles file: `subtitles/GnomeOnARope_subtitles.srt`
 
 ---
@@ -47,4 +47,4 @@ A 2D platformer-style game where the player controls a gnome swinging on a rope 
 ---
 
 ## Date of Final Commit / Release
-- `September 29, 2025`
+- `September 30, 2025`
