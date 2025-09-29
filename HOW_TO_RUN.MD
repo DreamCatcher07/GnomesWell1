@@ -14,15 +14,7 @@
 3. Once loaded, open the scene:  
    - `Assets/Scenes/Main.scene`  
 4. Click the **Play** button at the top of the Unity Editor.  
-
----
-
-## Running the Built Version
-If you don’t want to open Unity:
-1. Go to the `/Builds/` folder.  
-2. Run the executable:  
-   - On Windows: `GnomeOnARope.exe`  
-   - On macOS: `GnomeOnARope.app`  
+  
 
 ---
 
