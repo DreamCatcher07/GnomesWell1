@@ -1,7 +1,7 @@
 # How to Run Gnome on a Rope
 
 ## Requirements
-- **Unity 2021.3.x (LTS)** or later  
+- **Unity 2021.3.x (LTS)** or later (the one that we are using is Unity 6.2(6000.2.2f1))  
 - Windows 10/11 or macOS (8 GB RAM minimum)  
 - Disk space: ~1 GB  
 
