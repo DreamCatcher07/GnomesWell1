@@ -1,0 +1,259 @@
+1
+00:00:16,000 --> 00:00:34,999
+this is the final version of our game gnome on a rope
+
+2
+00:00:35,000 --> 00:00:40,999
+the main mechanics is rope swinging the long can move left or right and adjust the rope's length there are
+
+3
+00:00:41,000 --> 00:00:48,999
+traps like spikes and blades touching them ends the game unless invincible mode dissolve where the gnome survives but the
+
+4
+00:00:49,000 --> 00:00:55,999
+steel shows blood the goal is to collect the treasure and reach the exit if I make it while holding
+
+5
+00:00:56,000 --> 00:01:03,999
+the treasure I win we also added a menu to resume or start the game that's the full side swing
+
+6
+00:01:04,000 --> 00:01:12,999
+avoid traps grab the treasure and escape now let's take a look at the game's architecture the main character is
+
+7
+00:01:13,000 --> 00:01:21,999
+the gnome built as a ragdoll it's made up of body parts like the head arms legs and torso
+
+8
+00:01:22,000 --> 00:01:30,999
+each part has a rigid body 2D connected with Unity joints so the gnome moves in a natural physics-based way
+
+9
+00:01:31,000 --> 00:01:40,999
+expand the gnome prefab in the Unity hierarchy point to head torso arms legs highlight rigid body 2D plus joint
+
+10
+00:01:41,000 --> 00:01:49,999
+2D components the gnome hangs from a rope which is created at runtime the rope is made of small physics
+
+11
+00:01:50,000 --> 00:02:02,999
+segments linked by joints giving it flexibility and swing players can extend or retract it with simple controls
+
+12
+00:02:03,000 --> 00:02:10,999
+now in play mode zoom in on rope segment clone objects in the hierarchy highlight rigid body 2D plus joint
+
+13
+00:02:11,000 --> 00:02:20,999
+2D press up or down to show extension and retraction controlling everything is the game manager this script handles the
+
+14
+00:02:21,000 --> 00:02:27,999
+main flow starting a new game resetting when the gnome dies checking if the treasure is collected and showing win
+
+15
+00:02:28,000 --> 00:02:31,999
+or game over screens
+
+16
+00:02:32,000 --> 00:02:44,999
+now let's open the game manager.cs in Visual Studio or Ryder
+
+17
+00:02:45,000 --> 00:02:53,999
+now briefly scroll through reset game check win and game over so the rugged doll gnome the rope system and
+
+18
+00:02:54,000 --> 00:03:01,999
+the game manager all work together to create the swinging mechanic and core game play zoom out in scene view
+
+19
+00:03:02,000 --> 00:03:11,999
+show gnome plus rope plus traps plus exit swing the gnome once the summarize visually
+
+20
+00:03:12,000 --> 00:03:22,999
+i'm going to walk you through the key code for this gnome game first the rope physics we will open
+
+21
+00:03:23,000 --> 00:03:29,999
+the rope script the rope is made of many small segments each segment has a rigid body 2D and the
+
+22
+00:03:30,000 --> 00:03:38,999
+spring joint we add and remove segment to lengthen or shorten the rope in create row segment function we instantiate
+
+23
+00:03:39,000 --> 00:03:46,999
+a segment and where it's joined to the chain in update function we change the top segments joint distance increasing
+
+24
+00:03:47,000 --> 00:03:55,999
+the distance makes the rope extend decreasing it shortens the rope a line renderer draws the rope visually by following
+
+25
+00:03:56,000 --> 00:04:06,999
+each segment position so physics comes from many rigid bodies linked by spring joints this makes swinging feels natural and
+
+26
+00:04:07,000 --> 00:04:15,999
+reactive to forces
+
+27
+00:04:16,000 --> 00:04:24,999
+next is collision and damage we will open the signal onouch script this script detects collision if the collider is
+
+28
+00:04:25,000 --> 00:04:34,999
+tag player it invokes a unity event that event is hoop to method in the scene for example traps traps
+
+29
+00:04:35,000 --> 00:04:47,999
+call game manager touch function or game manager.firetrop touch function and game manager then calls kill gnome function which plays
+
+30
+00:04:48,000 --> 00:05:00,999
+sounds and triggers the gnome death logic next is the gnome script destroy gnome function runs the death behavior it
+
+31
+00:05:01,000 --> 00:05:08,999
+can spawn prefabs like slices of things it also iterates every body part child
+
+32
+00:05:09,000 --> 00:05:18,999
+next is the body part script the detach function and parents apart and let it physic simulate independently later when
+
+33
+00:05:19,000 --> 00:05:27,999
+that part skips it removes it joints rigid bodies and colliders to clean up this decoupling keep physic cheap once
+
+34
+00:05:28,000 --> 00:05:45,999
+parts are out
+
+35
+00:05:46,000 --> 00:05:53,999
+next scoring here is simple the game main objective is the treasure when the gnome picks up the treasure we
+
+36
+00:05:54,000 --> 00:06:01,999
+call the game manager treasure collected function the set current gnome holding pressure is equal to true gnome updates the
+
+37
+00:06:02,000 --> 00:06:10,999
+arm is tried to show the pressure when player reaches the exit game manager that exit reach function checks holding
+
+38
+00:06:11,000 --> 00:06:20,999
+pressure if true the game plays the game over sound pauses time and shows the game over user interface so
+
+39
+00:06:21,000 --> 00:06:29,999
+this car is a boolean rule pressure collected equals win at exit
+
+40
+00:06:30,000 --> 00:06:37,999
+now the UI game manager holds references to three menus main menu gameplay menu and game over menu when the
+
+41
+00:06:38,000 --> 00:06:46,999
+game passes we set the time that time scale is equal to zero and toggle menu visibility resume sets time
+
+42
+00:06:47,000 --> 00:06:54,999
+that time scale is equal to one the invincible toggle reads the toggle state each frame in update function and
+
+43
+00:06:55,000 --> 00:07:05,999
+sets non invincible if invincible is true remove known function and destroy known function early out and the player won't
+
+44
+00:07:06,000 --> 00:07:16,999
+respond the main menu script starts background scene loading with load scene as it it shows a loading overlay and
+
+45
+00:07:17,000 --> 00:07:24,999
+then allow activation when the player presses new game
+
+46
+00:07:25,000 --> 00:07:33,999
+so a few small helpers make the game feel complete sprite swappers which is sprites for items spinner rotation animates
+
+47
+00:07:34,000 --> 00:07:43,999
+rotating traps remove after delay and resettable handle clean up and scene resets camera follow smoothly follows the gnome's position
+
+48
+00:07:44,000 --> 00:07:52,999
+within weeks next let's take a look at the asset and folder structure of the project inside the asset folder
+
+49
+00:07:53,000 --> 00:08:01,999
+I organize everything into subfolders we have here the script scenes and such in the script folder it contains all
+
+50
+00:08:02,000 --> 00:08:11,999
+the C# scripts like the rope scripts the manager scripts and such in the sprites folder here we have all
+
+51
+00:08:12,000 --> 00:08:23,999
+the 2D images and objects like traps no body parts treasure chest and such in the sound folder it stores
+
+52
+00:08:24,000 --> 00:08:32,999
+the background music and sound effects for traps death and pressure pickup for the scene folder we have the sample
+
+53
+00:08:33,000 --> 00:08:43,999
+scene that you repeat for the known folder we have the reusable objects like the rope segments the gnome rag
+
+54
+00:08:44,000 --> 00:08:57,999
+doll and more also we have the setting folder they stored the template the renderer 2D asset and such for
+
+55
+00:08:58,000 --> 00:09:11,999
+the text mesh text mesh pro folder it contains the font resources shaders and sprites for the project fonts for
+
+56
+00:09:12,000 --> 00:09:21,999
+the text and the other resources so outside the asset we also have the project setting folder which Unity uses
+
+57
+00:09:22,000 --> 00:09:30,999
+to store input physics and build settings and other required files like the readme file how to run the project
+
+58
+00:09:31,000 --> 00:09:44,999
+file the third party file for honesty and integrity and the release file for the project zip file also the
+
+59
+00:09:45,000 --> 00:09:52,999
+G ignore for the G to ignore the other files for submission I included a release zip file in the
+
+60
+00:09:53,000 --> 00:10:02,999
+repository inside it are assets project settings and the builds folder with a ready to run version to play just
+
+61
+00:10:03,000 --> 00:10:10,999
+extract the zip file and go to the builds folder on Windows run build.apk if you want to test it
+
+62
+00:10:11,000 --> 00:10:22,999
+in Unity open Unity Hub load the project open the main.csin and press play controls are simple arrow keys to
+
+63
+00:10:23,000 --> 00:10:34,999
+move left and right up and down arrows to change rope length and escape to pause there are few limitations
+
+64
+00:10:35,000 --> 00:10:46,999
+sometimes there basics can jitter when swinging very fast currently there's only one level adding more levels would improve replayability
+
+65
+00:10:47,000 --> 00:11:11,000
+we would also like to add more sounds effect particle effect and maybe high score system in the future version
