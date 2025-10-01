@@ -11,10 +11,12 @@ A 2D platformer-style game where the player controls a gnome swinging on a rope 
 ---
 
 ## Controls
-- **Arrow Keys / A & D** → Move left and right  
-- **Up Arrow / W** → Shorten rope  
-- **Down Arrow / S** → Lengthen rope  
-- **Esc** → Pause / Return to menu  
+- **Tilt the Devce**→ Move left and right  
+- **Up Button** → Shorten rope  
+- **Down Button** → Lengthen rope  
+- **Menu Button** → Pause / Return to menu
+- **New game button** → Start the game
+- **Invincible Checkbox** → make the gnome invincible 
 
 ---
 
